@@ -1,0 +1,30 @@
+#topbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:0 1rem;
+    align-items: center;
+    background-color: white;
+    height: fit-content;
+}
+.rightWidgets{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.rightWidgets>svg{
+    background-color: #fed766;
+    margin-left: 5rem;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.rightWidgets>input{
+    border-radius: 5px;
+    border-style: none;
+    width: 300px;
+    height: 25px;
+    background-color: #eff1f3;
+}

@@ -1,0 +1,50 @@
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
+#navbar{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #272727;
+    margin: 0;
+}
+ul {
+    flex:5;
+    list-style-type: none;
+    padding: 0;
+}
+
+
+
+.bottomlinks{
+    flex: 0;
+    border-style: solid;
+    color: white;
+    border-width: 1px  0 0  0;
+}
+
+
+.logo{
+    flex: 2;
+    color: #009fb7;
+    font-size: larger;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.logo>a>img{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 0;
+}
+
+.logo>h1{
+    margin-top: 0;
+}
+
+.sidebar-item{
+    padding: 1rem;
+    color: white;
+}
+.sidebar-item>i{
+    padding-right: 1rem;
+
+}

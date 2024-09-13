@@ -1,0 +1,25 @@
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+Sidebar{
+    width: 10%
+}
+
+main{
+    flex:2;
+    display: flex;
+    flex-direction: column;
+}
+Topbar{
+    flex: 0;
+}
+
+ProgressBoard{
+    flex:auto;
+}
