@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding:0 1rem;
+    padding: 0.5rem 1rem;
     align-items: center;
-    background-color: white;
+    background-color: #ffffff;
     height: fit-content;
+    border: 1px solid #6967733d;
+    border-width: 0  0 1px  0;
 }
 .rightWidgets{
     display: flex;

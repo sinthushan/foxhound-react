@@ -9,6 +9,8 @@
 ul {
     flex:5;
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
     padding: 0;
 }
 
@@ -23,17 +25,18 @@ ul {
 
 
 .logo{
-    flex: 2;
+    flex: 1;
     color: #009fb7;
     font-size: larger;
     text-align: center;
-    padding-top: 2rem;
+    padding: 0.5rem
 }
 
 .logo>a>img{
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin-bottom: 0;
+
 }
 
 .logo>h1{
@@ -41,10 +44,15 @@ ul {
 }
 
 .sidebar-item{
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
     color: white;
 }
 .sidebar-item>i{
-    padding-right: 1rem;
-
+    padding: 0.5rem 0
 }

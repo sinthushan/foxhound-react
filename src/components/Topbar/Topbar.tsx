@@ -1,9 +1,12 @@
+import { useContext } from "react"
 import "./topbar.css"
+import { UserContext } from "../../services/user"
 
 const Topbar = () => {
+    const {user} = useContext(UserContext)
     return (
         <nav id="topbar">
-            <h1>Dashboard</h1>
+            <h1>{user?.username}'s Dashboard</h1>
             <div className="rightWidgets">
                 <input type="text" placeholder="Search"/>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960">

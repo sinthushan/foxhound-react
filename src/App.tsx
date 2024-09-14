@@ -2,27 +2,37 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import ProgressBoard from "./components/ProgressBoard/ProgressBoard";
 import Profile from "./pages/Profile";
-import { useState } from "react";
+import { useContext, useEffect, useState} from "react";
 import Splash from "./pages/Splash";
 
-import checkifloggedIn from "./services/user";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { checkifloggedIn, UserContext } from "./services/user";
+import { JobProvider } from "./services/jobsService";
 
 
 
 
 const App =  () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  checkifloggedIn().then(
-    (user) => {
-      if (user){
-        setIsLoggedIn(true)
+  const {user, setUser} = useContext(UserContext)
+  
+  useEffect(() => {
+    checkifloggedIn().then(
+      (applicant) => {
+        if (applicant){
+          setUser(applicant)
+          setIsLoggedIn(true)
+        }
       }
-    }
-  )
+    )
+  }, [])
+  
+ 
 
   return(
+    <JobProvider> 
     <Routes>
       <Route path="/" element={isLoggedIn ? <Dashboard/>: <Navigate replace to={"/splash"}/>}>
         <Route path="/" element={<ProgressBoard/>} />
@@ -32,6 +42,7 @@ const App =  () => {
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
     </Routes>
+    </JobProvider>
   )
 }
 
