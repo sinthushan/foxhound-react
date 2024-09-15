@@ -4,18 +4,12 @@ import ProgressBoard from "./components/ProgressBoard/ProgressBoard";
 import Profile from "./pages/Profile";
 import { useContext, useEffect, useState} from "react";
 import Splash from "./pages/Splash";
-
-
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { checkifloggedIn, UserContext } from "./services/user";
-import { JobProvider } from "./services/jobsService";
-
-
-
 
 const App =  () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   const {user, setUser} = useContext(UserContext)
   
   useEffect(() => {
@@ -23,16 +17,23 @@ const App =  () => {
       (applicant) => {
         if (applicant){
           setUser(applicant)
-          setIsLoggedIn(true)
         }
-      }
-    )
+    });
   }, [])
-  
+
+
+  useEffect(() => {
+    if (user){
+      setIsLoggedIn(true)
+    }else{
+      setIsLoggedIn(false)
+    }
+  }, [user])
+
  
 
   return(
-    <JobProvider> 
+   
     <Routes>
       <Route path="/" element={isLoggedIn ? <Dashboard/>: <Navigate replace to={"/splash"}/>}>
         <Route path="/" element={<ProgressBoard/>} />
@@ -42,7 +43,7 @@ const App =  () => {
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
     </Routes>
-    </JobProvider>
+
   )
 }
 

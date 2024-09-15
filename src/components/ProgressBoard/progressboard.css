@@ -10,7 +10,14 @@
     justify-content: flex-end;
 }
 
-
+.jobSection{
+    height: 90%;
+    overflow-y: scroll;
+    border: 2px solid #2727279f;
+    border-radius: 5px;
+    margin: 0.5rem 2rem;
+    box-shadow: 0 0  5px #2727275e;
+}
 
 #addJob{
     background-color: #fed766;

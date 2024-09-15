@@ -1,10 +1,12 @@
-import { SyntheticEvent } from "react"
+import { SyntheticEvent, useContext } from "react"
 import auth from "../services/auth"
 import logo from '../assets/foxhound.png'
 import { useNavigate } from "react-router-dom"
 import './register.css'
+import { UserContext } from "../services/user"
 
 const Register = () => {
+    const {setUser} = useContext(UserContext)    
     const navigate = useNavigate()
     const register = (event: SyntheticEvent) => {
         event.preventDefault()
@@ -17,6 +19,7 @@ const Register = () => {
         };
         auth.register(target.username.value,target.email.value, target.password.value, target.confirmpassword.value).then((user) => {
             if (user){
+                setUser(user)
                 navigate('/')
             }
         })

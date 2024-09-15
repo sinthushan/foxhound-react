@@ -1,9 +1,11 @@
-import { SyntheticEvent } from "react"
+import { SyntheticEvent, useContext } from "react"
 import auth from "../services/auth"
 import logo from '../assets/foxhound.png'
 import { useNavigate  } from 'react-router-dom';
 import './login.css'
+import { UserContext } from "../services/user";
 const Login = () => {
+    const {setUser} = useContext(UserContext)    
     const navigate = useNavigate()
     const login = (event: SyntheticEvent) => {
         event.preventDefault()
@@ -14,6 +16,7 @@ const Login = () => {
         };
         auth.login(target.username.value, target.password.value).then((user) => {
             if (user){
+                setUser(user)
                 navigate('/')
             }
         })

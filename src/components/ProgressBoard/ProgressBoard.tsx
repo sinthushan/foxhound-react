@@ -2,16 +2,18 @@ import { SyntheticEvent, useContext, useEffect, useRef } from "react"
 import JobForm from "../jobForm/jobForm"
 import "./progressboard.css"
 import jobsService from "../../services/jobsService"
+import { UserContext } from "../../services/user"
+import SwimLane from "../SwimLane/SwimLane"
 
 
 const ProgressBoard = () => {
-    
+    const {user} = useContext(UserContext)
     const {jobs, setJobs} = useContext(jobsService.JobContext)
     const ref = useRef<HTMLDialogElement>(null)
     const handleClick = () => {
         ref.current?.showModal()
     }
-    
+
     useEffect(() => {
         jobsService.getJobs().then(
           (newjobs) => {
@@ -19,8 +21,13 @@ const ProgressBoard = () => {
               setJobs(newjobs)
             }
           }
+        ).catch(
+            (error) => {
+                setJobs([])
+            }
         )
-    }, [])
+    }, [user])
+
     const addJob = (event: SyntheticEvent) => {
         event.preventDefault()
         event.stopPropagation()
@@ -35,15 +42,18 @@ const ProgressBoard = () => {
         })
         ref.current?.close()
     }
+
+
     return (
         <div className="maindisplay">
             <JobForm ref={ref} addJob={addJob}/>
             <nav className="controlsNav">
                 <button id="addJob" onClick={handleClick}>Add Application</button>
-                
-               
             </nav>
-            {jobs.map((job) => <div key={job.id}>{job.title}</div>)}
+            <main className="jobSection">
+                {jobs.map((job) => <SwimLane key={job.id} job={job}></SwimLane>)}
+            </main>
+            
         </div>
     )
 }

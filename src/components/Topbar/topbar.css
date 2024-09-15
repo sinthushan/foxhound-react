@@ -18,15 +18,22 @@
 
 .rightWidgets>svg{
     background-color: #fed766;
-    margin-left: 5rem;
+    margin-left: 1rem;
     padding: 5px;
     border-radius: 50%;
 }
 
-.rightWidgets>input{
-    border-radius: 5px;
-    border-style: none;
-    width: 300px;
-    height: 25px;
-    background-color: #eff1f3;
+
+
+#logout{
+    padding:0 0.5rem;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+}
+
+#logout:hover{
+    cursor: pointer;
+    color: #009fb7;
+    text-shadow: 0px 0px 10px #009fb768;
 }

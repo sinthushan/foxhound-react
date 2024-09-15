@@ -1,6 +1,6 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react"
 import instance from './instance';
-import { Job } from "../models/job";
+import { Job, Stage } from "../models/job";
 
 interface JobContextInterface{
     jobs: Job[]|[],
@@ -27,6 +27,7 @@ export function JobProvider({children}:{children: ReactNode}){
 const getJobs = async () => {
     let url = 'jobs/'
     const resp = await instance.get(url)
+    console.log("response:" + resp.status)
     if (resp.status === 200){
         const  jobs: Job[] = resp.data
         return jobs 
@@ -47,4 +48,20 @@ const addJob = async (title: string, company: string) => {
     return null
 }
 
-export default { JobContext, JobProvider, getJobs, addJob}
+
+const addStage = async (job: number, stage: string, round: number, comment: string) => {
+    let url = 'jobs/stages/'
+    const resp = await instance.post(url, {
+        job: job, 
+        stage: stage,
+        round: round,
+        comment: comment
+    })
+    if (resp.status === 201){
+        const  stage: Stage = resp.data
+        return stage 
+    }
+    return null
+}
+
+export default { JobContext, JobProvider, getJobs, addJob, addStage}

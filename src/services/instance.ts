@@ -7,17 +7,17 @@ const instance = axios.create({
     baseURL: BASEURL
 });
 
-const AUTH_TOKEN = 'Bearer ' + localStorage.getItem('access')
-
-instance.defaults.headers.common['Authorization'] =  AUTH_TOKEN;
-
 let isRefreshing = false
 
+instance.interceptors.request.use(function (config) {
+    config.headers.Authorization = 'Bearer ' + localStorage.getItem('access')
+    return config;
+ });
 
 instance.interceptors.response.use( (response) => {
     return response;
   }, async (error) => {
-   
+    console.log('here')
     if (error.response.status === 401 && !isRefreshing){
         isRefreshing = true
         const status = await auth.refreshToken()
