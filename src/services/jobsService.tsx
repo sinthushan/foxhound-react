@@ -1,6 +1,43 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react"
-import instance from './instance';
 import { Job, Stage } from "../models/job";
+
+import axios from 'axios';
+import auth from './auth'
+
+
+const BASEURL = 'http://127.0.0.1:8000/api/v1/'
+const jobInstance = axios.create({
+    baseURL: BASEURL
+});
+
+let isRefreshing = false
+
+jobInstance.interceptors.request.use( (config) => {
+    if (!config.url?.includes("refresh")){
+        config.headers.Authorization = 'Bearer ' + localStorage.getItem('access')
+    }
+    
+    return config;
+ });
+
+ jobInstance.interceptors.response.use( (response) => {
+    return response;
+  }, async (error) => {
+    if (error.response.status === 401 && !isRefreshing){
+        isRefreshing = true
+        const status = await auth.refreshToken()
+        isRefreshing = false
+        if (status !== 200){
+            return Promise.reject(error); 
+        } 
+        error.config.headers.Authorization = 'Bearer ' + localStorage.getItem('access')
+
+        return jobInstance(error.config)
+    }
+    return Promise.reject(error);
+});
+
+
 
 interface JobContextInterface{
     jobs: Job[]|[],
@@ -26,8 +63,7 @@ export function JobProvider({children}:{children: ReactNode}){
 
 const getJobs = async () => {
     let url = 'jobs/'
-    const resp = await instance.get(url)
-    console.log("response:" + resp.status)
+    const resp = await jobInstance.get(url)
     if (resp.status === 200){
         const  jobs: Job[] = resp.data
         return jobs 
@@ -37,7 +73,7 @@ const getJobs = async () => {
 
 const addJob = async (title: string, company: string) => {
     let url = 'jobs/'
-    const resp = await instance.post(url, {
+    const resp = await jobInstance.post(url, {
         title: title, 
         company: company
     })
@@ -51,7 +87,7 @@ const addJob = async (title: string, company: string) => {
 
 const addStage = async (job: number, stage: string, round: number, comment: string) => {
     let url = 'jobs/stages/'
-    const resp = await instance.post(url, {
+    const resp = await jobInstance.post(url, {
         job: job, 
         stage: stage,
         round: round,

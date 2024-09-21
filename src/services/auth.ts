@@ -5,7 +5,11 @@ const authInstance = axios.create({
     baseURL: AUTH_BASEURL
 });
 
-
+authInstance.interceptors.response.use( (response) => {
+    return response;
+  }, async (error) => {
+     return Promise.reject(error);
+});
 
 
 const login = async (username:string, password:string) => {

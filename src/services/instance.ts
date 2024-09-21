@@ -9,15 +9,17 @@ const instance = axios.create({
 
 let isRefreshing = false
 
-instance.interceptors.request.use(function (config) {
-    config.headers.Authorization = 'Bearer ' + localStorage.getItem('access')
+instance.interceptors.request.use( (config) => {
+    if (!config.url?.includes("refresh")){
+        config.headers.Authorization = 'Bearer ' + localStorage.getItem('access')
+    }
+    
     return config;
  });
 
 instance.interceptors.response.use( (response) => {
     return response;
   }, async (error) => {
-    console.log('here')
     if (error.response.status === 401 && !isRefreshing){
         isRefreshing = true
         const status = await auth.refreshToken()
@@ -25,8 +27,9 @@ instance.interceptors.response.use( (response) => {
         if (status !== 200){
             return Promise.reject(error); 
         } 
-        error.config.headers['Authorization'] = 'Bearer ' + localStorage.getItem('access')
-        return axios.request(error.config)
+        error.config.headers.Authorization = 'Bearer ' + localStorage.getItem('access')
+        const resp = await instance(error.config)
+        return resp
     }
     return Promise.reject(error);
 });

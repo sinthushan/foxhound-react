@@ -43,10 +43,17 @@ const ProgressBoard = () => {
         ref.current?.close()
     }
 
+    const closeDialog = (event: SyntheticEvent) => {
+        event.preventDefault()
+        event.stopPropagation()
+        if(event.target == ref.current){
+            ref.current?.close()
+        }
+    }
 
     return (
         <div className="maindisplay">
-            <JobForm ref={ref} addJob={addJob}/>
+            <JobForm ref={ref} addJob={addJob} closeDialog={closeDialog}/>
             <nav className="controlsNav">
                 <button id="addJob" onClick={handleClick}>Add Application</button>
             </nav>

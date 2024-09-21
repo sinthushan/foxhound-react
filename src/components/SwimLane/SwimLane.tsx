@@ -41,10 +41,18 @@ const SwimLane = ({job} : {job: Job}) => {
     const displayAddStage = () => {
         ref.current?.showModal()
     }
+
+    const closeDialog = (event: SyntheticEvent) => {
+        event.preventDefault()
+        event.stopPropagation()
+        if(event.target == ref.current){
+            ref.current?.close()
+        }
+    }
     
     return(
         <div  className="swimLane">
-            <StageForm ref={ref} addStage={addStage}/>
+            <StageForm ref={ref} addStage={addStage} closeDialog={closeDialog}/>
             {job.stages.map((stage, index) => (
                 <div key={stage.id} className="job">
                     <div className="jobCard"> 

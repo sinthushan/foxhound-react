@@ -1,0 +1,34 @@
+#stageDialog{
+    height: fit-content;
+    width: fit-content;
+    padding: 0;
+    border-radius: 10px;
+    align-self: center;
+    justify-self: center;
+    background-color: transparent;
+ }
+ 
+ .stageFormContainer{
+     background-color: #272727;
+     color: #eff1f3;
+     border-radius: 10px;
+     padding: 1rem;
+     border-color: #009fb7;
+ 
+ }
+ 
+ #stageDialog::backdrop {
+     background-color: #272727ce;
+ }
+ 
+ #stageForm button{
+     display: block;
+     background-color: #fed766;
+     width: 20%;
+     padding: 0.5rem;
+     font-weight: bolder;
+     border-radius: 5px;
+     align-self: center;
+     justify-self: center;
+     margin: 0 auto;
+ }

@@ -18,7 +18,11 @@ const App =  () => {
         if (applicant){
           setUser(applicant)
         }
-    });
+    }).catch(
+      (error) => {
+        setUser(null)
+      }
+    );
   }, [])
 
 
