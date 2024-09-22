@@ -18,8 +18,10 @@ const SwimLane = ({job} : {job: Job}) => {
     }
 
     const addStage = (event: SyntheticEvent) => {
+        console.log("yo")
         event.preventDefault()
         event.stopPropagation()
+        
         const target = event.target as typeof event.target & {
             stage: { value: string };
             round: { value: number };
@@ -43,8 +45,9 @@ const SwimLane = ({job} : {job: Job}) => {
     }
 
     const closeDialog = (event: SyntheticEvent) => {
-        event.preventDefault()
-        event.stopPropagation()
+        console.log(event.target);
+
+
         if(event.target == ref.current){
             ref.current?.close()
         }

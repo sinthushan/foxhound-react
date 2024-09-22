@@ -44,8 +44,6 @@ const ProgressBoard = () => {
     }
 
     const closeDialog = (event: SyntheticEvent) => {
-        event.preventDefault()
-        event.stopPropagation()
         if(event.target == ref.current){
             ref.current?.close()
         }

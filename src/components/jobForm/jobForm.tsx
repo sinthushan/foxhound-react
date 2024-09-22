@@ -14,11 +14,11 @@ const JobForm =forwardRef<HTMLDialogElement,MyProps>((props, ref) => {
             <form id="jobForm"  onSubmit={props.addJob}>
                 <div className="form-control">
                     <label className="jobFormLabel" htmlFor="title">Job Title:</label>
-                    <input className="jobFormInput" name="title"/>
+                    <input className="jobFormInput" id="title" name="title"/>
                 </div>
                 <div className="form-control">
                     <label className="jobFormLabel" htmlFor="company">Company:</label>
-                    <input className="jobFormInput"  name="company"/>
+                    <input className="jobFormInput"  id="company"  name="company"/>
                 </div>
                 <button type="submit">Submit</button>
             </form>
