@@ -70,3 +70,12 @@ export const checkifloggedIn = async () => {
     return null
 }
 
+export const linkToGMail = async () => {
+    let url  = 'applicant/link/'
+    const resp = await userInstance.get(url)
+    if (resp.status === 200){
+        const data = resp.data
+        return data
+    }
+}
+

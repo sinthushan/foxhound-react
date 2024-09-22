@@ -1,7 +1,8 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import {Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import ProgressBoard from "./components/ProgressBoard/ProgressBoard";
 import Profile from "./pages/Profile";
+import EmailLink from "./pages/link"
 import { useContext, useEffect, useState} from "react";
 import Splash from "./pages/Splash";
 import Login from "./pages/Login";
@@ -39,9 +40,10 @@ const App =  () => {
   return(
    
     <Routes>
-      <Route path="/" element={isLoggedIn ? <Dashboard/>: <Navigate replace to={"/splash"}/>}>
+      <Route path="" element={isLoggedIn ? <Dashboard/>: <Navigate replace to={"/splash"}/>}>
         <Route path="/" element={<ProgressBoard/>} />
         <Route path="/profile" element={ <Profile/>} />
+        <Route path="/link" element={ <EmailLink/>} />
       </Route>
       <Route path="/splash" element={!isLoggedIn ?<Splash/>: <Navigate replace to={"/"}/>}/>
       <Route path="/login" element={<Login/>}/>
