@@ -1,39 +1,72 @@
-#topbar{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-    align-items: center;
-    background-color: #ffffff;
-    height: fit-content;
-    border: 1px solid #6967733d;
-    border-width: 0  0 1px  0;
+#topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  background-color: #ffffff;
+  height: fit-content;
+  border: 1px solid #6967733d;
+  border-width: 0 0 1px 0;
 }
-.rightWidgets{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-}
-
-.rightWidgets>svg{
-    background-color: #fed766;
-    margin-left: 1rem;
-    padding: 5px;
-    border-radius: 50%;
+.rightWidgets {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
 }
 
-
-
-#logout{
-    padding:0 0.5rem;
-    text-align: center;
-    justify-self: center;
-    align-self: center;
+.profileIcon {
+  background-color: #fed766;
+  margin-left: 1rem;
+  padding: 2px;
+  border-radius: 50%;
 }
 
-#logout:hover{
-    cursor: pointer;
-    color: #009fb7;
-    text-shadow: 0px 0px 10px #009fb768;
+#logout {
+  padding: 0 0.5rem;
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+}
+
+#logout:hover {
+  cursor: pointer;
+  color: #009fb7;
+  text-shadow: 0px 0px 10px #009fb768;
+}
+
+#profilepopover:popover-open {
+  width: 100px;
+  height: 70px;
+  position: absolute;
+  inset: unset;
+  top: 2.7rem;
+  right: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+.popoverOptions {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.2rem 0;
+}
+
+.popoverOptions > li {
+  margin: 0.2rem 0;
+  text-align: center;
+  width: 100%;
+  padding: 10px auto;
+}
+
+.popoverOptions > li:hover {
+  background-color: #009fb77f;
+  cursor: pointer;
+}
+
+#profilepopover::backdrop {
+  background-color: #2727279e;
 }
