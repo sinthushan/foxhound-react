@@ -18,11 +18,6 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <div className="sidebar-item">
-            <i className="nf nf-cod-graph_line"></i>Stats
-          </div>
-        </li>
-        <li>
           <Link to="/link">
             <div className="sidebar-item">
               <i className="nf nf-md-vector_link"></i>Link
@@ -30,13 +25,6 @@ const Sidebar = () => {
               Accounts
             </div>
           </Link>
-        </li>
-      </ul>
-      <ul className="bottomlinks">
-        <li>
-          <div className="sidebar-item">
-            <i className="nf nf-cod-settings_gear"></i>Settings
-          </div>
         </li>
       </ul>
     </nav>

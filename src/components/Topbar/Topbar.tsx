@@ -3,11 +3,29 @@ import "./topbar.css";
 import { UserContext } from "../../services/user";
 import { useNavigate } from "react-router-dom";
 
-const Topbar = ({ logoutUser }: { logoutUser: () => void }) => {
+const Topbar = ({
+  logoutUser,
+  path,
+}: {
+  logoutUser: () => void;
+  path: string;
+}) => {
   const { user } = useContext(UserContext);
+  let cleanPath = path.replace("/", "");
+  if (cleanPath) {
+    cleanPath = capitalizeFirstLetter(cleanPath);
+  } else {
+    cleanPath = "Dashboard";
+  }
+  function capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <nav id="topbar">
-      <h1>{user?.username}'s Dashboard</h1>
+      <h1>
+        {user?.username}'s {cleanPath}
+      </h1>
       <div className="rightWidgets">
         <button className="profileIcon" popovertarget="profilepopover">
           <svg

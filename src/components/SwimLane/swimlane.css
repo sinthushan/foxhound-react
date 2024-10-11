@@ -1,48 +1,61 @@
-.swimLane{
-    display: flex;
-    flex-direction: row;
-    padding: 2rem 1rem;
-    border: 2px dotted #2727279f;
-    border-width: 0  0 1px  0;
+.swimLane {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem 1rem;
+  border: 2px dotted #2727279f;
+  border-width: 0 0 1px 0;
 }
-.job{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.job {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.addArrow{
-    display: none;
-    padding: 0;
+.addArrow {
+  display: none;
+  padding: 0;
 }
-.addArrow:hover{
-    cursor: pointer;
-    padding: 0;
-}
-
-
-.job:hover  .addArrow {
-    display: block;
+.addArrow:hover {
+  cursor: pointer;
+  padding: 0;
 }
 
-.jobCard{
-    border: 1px solid #69677346;
-    width: 15rem;
-    height: 7rem;
-    border-radius: 5px;
-    background-color: white;
+.job:hover .addArrow {
+  display: block;
 }
 
-.jobCardHeader{
-    background-color: #fed766;
-    color: #696773;
-    font-weight: bolder;
-    padding: 0.2rem;
-}
-.jobCardBody{
-    margin: 1rem;
+.jobCard {
+  border: 1px solid #69677346;
+  width: 15rem;
+  height: 7rem;
+  border-radius: 5px;
+  background-color: white;
 }
 
-line{
-    stroke-width:2px;
+.jobCardHeader {
+  background-color: #fed766;
+  color: #696773;
+  font-weight: bolder;
+  padding: 0.2rem;
+}
+.jobCardBody {
+  margin: 1rem;
 }
 
+line {
+  stroke-width: 2px;
+}
+
+.removeApplication {
+  background-color: #fe6666;
+  padding: 0.5rem;
+  font-weight: bolder;
+  border-radius: 5px;
+  height: fit-content;
+  align-self: center;
+  margin-left: auto;
+}
+
+.removeApplication:hover {
+  box-shadow: 0 0 10px #fed866;
+  cursor: pointer;
+}

@@ -1,17 +1,127 @@
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 * {
-    margin: 0;
+  margin: 0;
 }
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
+body > #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
 
-body>#root{
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+.linkAccountContainer {
+  height: 100%;
+  background-color: #eff1f3;
+}
+
+.linkAccountBtnContainer {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.linkAccountBtn {
+  background-color: #fed766;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-weight: bolder;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.linkAccountBtn:hover {
+  box-shadow: 0 0 10px #fed866;
+  cursor: pointer;
+}
+
+.linkAccountBtnimg {
+  width: 30px;
+  margin: 0 1rem;
+}
+
+.possibleJobApp {
+  margin: 1rem 2rem;
+  background-color: #009fb7;
+  padding: 2rem 1rem;
+  font-weight: bold;
+  font-size: larger;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.possibleJobApp input {
+  background-color: #fed766;
+  padding: 0.5rem;
+  font-weight: bolder;
+  border-radius: 5px;
+}
+
+.possibleJobApp input:hover {
+  box-shadow: 0 0 10px #fed866;
+  cursor: pointer;
+}
+
+.userProfile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eff1f3;
+}
+
+.ProfileBody {
+  margin: 2rem;
+  padding: 2rem;
+  min-width: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.userfield {
+  margin: 1rem 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profilePicture {
+  margin: 2rem;
+  padding: 1rem;
+  width: 10rem;
+  border-radius: 50%;
+  background-color: #009fb7;
+}
+
+.profileActions button {
+  background-color: #fed766;
+  padding: 0.5rem;
+  font-weight: bolder;
+  border-radius: 5px;
+  margin: 1rem;
+}
+
+.profileActions button:hover {
+  box-shadow: 0 0 10px #fed866;
+  cursor: pointer;
 }
