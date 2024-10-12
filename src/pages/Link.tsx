@@ -3,14 +3,18 @@ import gmail from "../assets/Gmail.svg";
 import { SyntheticEvent, useContext, useRef, useState } from "react";
 import JobForm from "../components/jobForm/jobForm";
 import jobsService from "../services/jobsService";
+import { Loader } from "../components/loader/Loader";
 
 const EmailLink = () => {
   const [linkResults, setLinkResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const ref = useRef<HTMLDialogElement>(null);
 
   const { jobs, setJobs } = useContext(jobsService.JobContext);
   const linkAccount = () => {
+    setIsLoading(true);
     linkToGMail().then((data) => {
+      setIsLoading(false);
       setLinkResults(data);
     });
   };
@@ -22,6 +26,7 @@ const EmailLink = () => {
   };
 
   const addJob = (event: SyntheticEvent) => {
+    setIsLoading(true);
     event.preventDefault();
     event.stopPropagation();
     const target = event.target as typeof event.target & {
@@ -38,6 +43,7 @@ const EmailLink = () => {
       }
     });
     ref.current?.close();
+    setIsLoading(false);
   };
 
   const closeDialog = (event: SyntheticEvent) => {
@@ -49,14 +55,18 @@ const EmailLink = () => {
   return (
     <main className="linkAccountContainer">
       <JobForm ref={ref} addJob={addJob} closeDialog={closeDialog} />
+
       <div className="linkAccountBtnContainer">
         <button className="linkAccountBtn" onClick={linkAccount}>
           <img className="linkAccountBtnimg" src={gmail} alt="" />
           Check GMail
         </button>
       </div>
+
       <section className="linkResults">
-        {linkResults ? (
+        {isLoading ? (
+          <Loader />
+        ) : linkResults ? (
           linkResults.map((result) => (
             <div key={result[0]} className="possibleJobApp">
               <label htmlFor={`add${result[0]}`}>{result[0]}</label>

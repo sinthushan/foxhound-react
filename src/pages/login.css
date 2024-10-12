@@ -1,51 +1,96 @@
-.container{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    height: 100vh;
-    width: 100vw;
-    background-color: #009fb7;
+.container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  width: 100vw;
+  background-color: #009fb7;
 }
 
-.form-control{
-    margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    height: 4rem;
-    width: 25rem;
+.form-control {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+  width: 25rem;
 }
-.form-control>button{
-    margin:0 40%;
-    background-color: #fed766;  
-    padding: 1rem;
-    font-weight: bolder;
-    border-radius: 5px;
-    
-}
-
-.form-control>button:hover{
-    cursor: pointer;
-    box-shadow: 0px 0px 10px #fffefe5a;
-     
- }
-
-.form-control>label{
-    font-size: x-large;
-    font-weight: bolder;
+.form-control > button {
+  margin: 0 40%;
+  background-color: #fed766;
+  padding: 1rem;
+  font-weight: bolder;
+  border-radius: 5px;
 }
 
-.form-control>input{
-    font-size: x-large;
-    font-weight: bolder;
+.form-control > button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px #fffefe5a;
 }
 
-#loginForm{
-    margin: 1rem 20rem 1rem 1rem;
-    padding: 2rem;
-    box-shadow: 10px 5px 10px #2727275a;
-    height: fit-content;
-    width: fit-content;
+.form-control > label {
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.form-control > input {
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.forgotPass {
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: large;
+}
+
+.forgotPass:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#loginForm {
+  margin: 1rem 20rem 1rem 1rem;
+  padding: 2rem;
+  box-shadow: 10px 5px 10px #2727275a;
+  height: fit-content;
+  width: fit-content;
+}
+
+#resetDialog {
+  height: fit-content;
+  width: fit-content;
+  padding: 0;
+  border-radius: 10px;
+  align-self: center;
+  justify-self: center;
+  background-color: transparent;
+}
+
+.resetFormContainer {
+  background-color: #272727;
+  color: #eff1f3;
+  border-radius: 10px;
+  padding: 1rem;
+  border-color: #009fb7;
+}
+
+#resetDialog::backdrop {
+  background-color: #272727ce;
+}
+
+#resetForm button {
+  display: block;
+  background-color: #fed766;
+  width: 20%;
+  padding: 0.5rem;
+  font-weight: bolder;
+  border-radius: 5px;
+  align-self: center;
+  justify-self: center;
+  margin: 0 auto;
 }

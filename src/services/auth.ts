@@ -15,7 +15,7 @@ authInstance.interceptors.response.use(
 );
 
 const login = async (username: string, password: string) => {
-  let url = "login/";
+  const url = "login/";
   const resp = await authInstance.post(url, {
     username: username,
     password: password,
@@ -34,7 +34,7 @@ const register = async (
   password: string,
   confirm_password: string
 ) => {
-  let url = "registration/";
+  const url = "registration/";
   const resp = await authInstance.post(url, {
     username: username,
     email: email,
@@ -51,7 +51,7 @@ const register = async (
 
 const logout = async () => {
   const token = localStorage.getItem("refresh");
-  let url = "logout/";
+  const url = "logout/";
   const resp = await authInstance.post(url, {
     refresh: token,
   });
@@ -80,12 +80,20 @@ const passwordChange = async (
       },
     }
   );
-  console.log(resp);
+};
+
+const passwordReset = async (email: string) => {
+  const url = "password/reset/";
+  const resp = await authInstance.post(url, { email: email });
+  if (resp.status === 200) {
+    return "Email sent";
+  }
+  return "Something went wrong";
 };
 
 const refreshToken = async () => {
   const token = localStorage.getItem("refresh");
-  let url = "token/refresh/";
+  const url = "token/refresh/";
   const resp = await authInstance.post(url, {
     refresh: token,
   });
@@ -94,4 +102,11 @@ const refreshToken = async () => {
   return resp.status;
 };
 
-export default { login, refreshToken, register, logout, passwordChange };
+export default {
+  login,
+  refreshToken,
+  register,
+  logout,
+  passwordChange,
+  passwordReset,
+};

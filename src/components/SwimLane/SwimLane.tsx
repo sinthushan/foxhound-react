@@ -6,17 +6,16 @@ import { SyntheticEvent, useContext, useRef } from "react";
 import jobsService from "../../services/jobsService";
 const SwimLane = ({ job }: { job: Job }) => {
   const ref = useRef<HTMLDialogElement>(null);
-  const { jobs, setJobs } = useContext(jobsService.JobContext);
+  const { setJobs } = useContext(jobsService.JobContext);
   const getJobs = () => {
     jobsService
       .getJobs()
       .then((newjobs) => {
         if (newjobs) {
-          console.log("yo");
           setJobs(newjobs);
         }
       })
-      .catch((error) => {
+      .catch(() => {
         setJobs([]);
       });
   };
@@ -58,8 +57,6 @@ const SwimLane = ({ job }: { job: Job }) => {
   };
 
   const closeDialog = (event: SyntheticEvent) => {
-    console.log(event.target);
-
     if (event.target == ref.current) {
       ref.current?.close();
     }
