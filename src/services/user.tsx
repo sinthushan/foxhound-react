@@ -76,6 +76,27 @@ export const checkifloggedIn = async () => {
   return null;
 };
 
+export const updateApplicant = async (
+  firstName: string,
+  lastName: string,
+  userEmail: string,
+  userBio: string
+) => {
+  const url = `applicant/`;
+  const data = {
+    email: userEmail,
+    first_name: firstName,
+    last_name: lastName,
+    bio: userBio,
+  };
+  const resp = await userInstance.put(url, data);
+  if (resp.status === 200) {
+    const user: User = resp.data;
+    return user;
+  }
+  return null;
+};
+
 export const linkToGMail = async () => {
   const url = "applicant/link/";
   const resp = await userInstance.get(url);

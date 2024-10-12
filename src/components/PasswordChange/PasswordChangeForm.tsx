@@ -13,7 +13,7 @@ export const PasswordChangeForm = forwardRef<HTMLDialogElement, MyProps>(
         <div className="passwordChangeFormContainer">
           <form id="passwordChangeForm" onSubmit={props.updatePassword}>
             <div className="form-control">
-              <label className="passwordChangeFormLabel" htmlFor="stage">
+              <label className="passwordChangeFormLabel" htmlFor="oldPassword">
                 Old Password:
               </label>
               <input
